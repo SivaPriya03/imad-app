@@ -5,9 +5,10 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articles={
+var articles=
+{
 
-   articleOne :
+  ' articleOne' :
     {
     title: 'Article one | Siva Priya',
     h1: 'Article One',
@@ -26,8 +27,8 @@ var articles={
         <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
             <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
         </div> `
-    } ;  
-    articleTwo :
+    } ,
+    'articleTwo' :
     {
 title: 'Article two | Siva Priya',
 h1: 'Article two',
@@ -46,8 +47,8 @@ But i can summarise!!!..<br><br>
 <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
 <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
 </div> `
-};
-    articleThree :
+},
+    'articleThree' :
     {
 title: 'Article three | Siva Priya',
 h1: 'Article three',
@@ -65,9 +66,7 @@ But i can summarise!!!..<br><br>
 <br>
 <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
 <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
-</div> `
-
-};
+</div> `}
 };
 function createTemplate(data)
 {
