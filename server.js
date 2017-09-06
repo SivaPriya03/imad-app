@@ -4,8 +4,11 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne =
-{
+
+var articles={
+
+   articleOne :
+    {
     title: 'Article one | Siva Priya',
     h1: 'Article One',
     date : 'Sep 9 2017 :(',
@@ -23,52 +26,48 @@ var articleOne =
         <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
             <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
         </div> `
-        
-            
+    } ;  
+    articleTwo :
+    {
+title: 'Article two | Siva Priya',
+h1: 'Article two',
+date : 'Sep 10 2017 :(',
+content:`
+<p>
+The second article describes 
+Non Programmer description to Git 
+Here is the link !!
+</p>
+<a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
+But i can summarise!!!..<br><br>
+<h2>Creating Git repository</h2>
+
+<br>
+<div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
+<br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
+</div> `
 };
-var articleTwo =
-{
-    title: 'Article two | Siva Priya',
-    h1: 'Article two',
-    date : 'Sep 10 2017 :(',
-    content:`
-            <p>
-                The second article describes 
-             Non Programmer description to Git 
-            Here is the link !!
-        </p>
-                <a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
-             But i can summarise!!!..<br><br>
-                  <h2>Creating Git repository</h2>
-            
-                        <br>
-        <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
-            <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
-        </div> `
-        
-            
+    articleThree :
+    {
+title: 'Article three | Siva Priya',
+h1: 'Article three',
+date : 'Sep 11 2017 :(',
+content:`
+<p>
+The third article describes 
+Non Programmer description to Git 
+Here is the link !!
+</p>
+<a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
+But i can summarise!!!..<br><br>
+<h2>Creating Git repository</h2>
+
+<br>
+<div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
+<br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
+</div> `
+
 };
-var articleThree =
-{
-    title: 'Article three | Siva Priya',
-    h1: 'Article three',
-    date : 'Sep 11 2017 :(',
-    content:`
-            <p>
-                The third article describes 
-             Non Programmer description to Git 
-            Here is the link !!
-        </p>
-                <a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
-             But i can summarise!!!..<br><br>
-                  <h2>Creating Git repository</h2>
-            
-                        <br>
-        <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
-            <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
-        </div> `
-        
-            
 };
 function createTemplate(data)
 {
@@ -116,19 +115,11 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-app.get('/article-one',function(req,res)
+app.get('/:articleName',function(req,res)
 {
-   res.send(createTemplate(articleOne));
+    var articleName=req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
-app.get('/article-two',function(req,res)
-{
-   res.send(createTemplate(articleTwo));
-});
-app.get('/article-three',function(req,res)
-{
-   res.send(createTemplate(articleThree));
-});
-
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
