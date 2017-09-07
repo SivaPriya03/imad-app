@@ -30,24 +30,25 @@ var articles=
     } ,
     'articleTwo' :
     {
-title: 'Article two | Siva Priya',
-h1: 'Article two',
-date : 'Sep 10 2017 :(',
-content:`
-<p>
-The second article describes 
-Non Programmer description to Git 
-Here is the link !!
-</p>
-<a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
-But i can summarise!!!..<br><br>
-<h2>Creating Git repository</h2>
-
-<br>
-<div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
-<br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
-</div> `
-},
+        title: 'Article two | Siva Priya',
+        h1: 'Article two',
+        date : 'Sep 10 2017 :(',
+        content:`
+        <p>
+        The second article describes 
+        Non Programmer description to Git 
+        Here is the link !!
+        </p>
+        <a href="https://blog.scottlowe.org/2015/01/14/non-programmer-git-intro/"> Click here</a>
+        But i can summarise!!!..<br><br>
+        <h2>Creating Git repository</h2>
+        
+        <br>
+            <div>To create a new repository, simply create the directory where you want the repository to be housed, then open a command prompt(or terminal window) and navigate to that directory. Once in the directory, use git init to initialize the directory as a Git repository.
+            <br> Cloning a Git repository is super simple: just use the git clone command with a URL<br>
+            </div> `
+        
+    },
     'articleThree' :
     {
 title: 'Article three | Siva Priya',
@@ -110,6 +111,10 @@ app.get('/', function (req, res) {
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
+app.get('/ui/main.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
+});
+
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
