@@ -1,13 +1,8 @@
-console.log('Loaded!');
-var element=document.getElementById('main-text');
-element.innerHTML='I am client side javascript';
-var img=document.getElementById('image');
-var marginleft=0;
-function moveRight()
+var button=document.getElementById('button');
+var counter=0;
+button.onclick=function()
 {
-    marginleft+=5;
-    img.style.marginLeft=marginleft+"px";
+    counter=counter+1;
+    var span=document.getElementById('counter');
+    span.innerHTML(counter.toString());
 }
-img. onclick=function(){
-    var interval=setInterval(moveRight,50);
-};
