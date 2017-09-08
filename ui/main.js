@@ -45,7 +45,7 @@ submit.onclick=function()
         }
     };
 
-request.open('GET','http://sivapriya1700.imad.hasura-app.io/submit-name?name='+myname,true);
+request.open('GET','http://sivapriya1700.imad.hasura-app.io/submit-name?name=' + myname,true);
 request.send(null);
 };
     
