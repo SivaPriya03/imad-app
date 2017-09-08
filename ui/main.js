@@ -21,7 +21,7 @@ request.open('GET','http://sivapriya1700.imad.hasura-app.io/counter',true);
 request.send(null);
 };
 var nameip=document.getElementById('name');
-var name=nameip.value;
+var myname=nameip.value;
 var submit=document.getElementById('submitbtn');
 submit.onclick=function()
 {
