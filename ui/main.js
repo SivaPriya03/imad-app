@@ -20,8 +20,6 @@ button.onclick=function()
 request.open('GET','http://sivapriya1700.imad.hasura-app.io/counter',true);
 request.send(null);
 };
-var nameip=document.getElementById('name');
-var myname=nameip.value;
 var submit=document.getElementById('submitbtn');
 submit.onclick=function()
 {
@@ -44,7 +42,8 @@ submit.onclick=function()
             }
         }
     };
-
+var nameip=document.getElementById('name');
+var myname=nameip.value;
 request.open('GET','http://sivapriya1700.imad.hasura-app.io/submit-name?name=' + myname,true);
 request.send(null);
 };
