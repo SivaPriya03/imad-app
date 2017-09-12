@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-/*var articles=
+var articles=
 {
 
     'articleOne' :
@@ -81,7 +81,7 @@ app.get('/', function (req, res) {
             </div> `
         
     }
-};*/
+};
 function createTemplate(data)
 {
     var title=data.title;
