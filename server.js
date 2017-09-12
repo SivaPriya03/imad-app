@@ -156,7 +156,18 @@ app.get('/submit-name', function (req, res) {
 app.get('/:articleName',function(req,res)
 {
     var articleName=req.params.articleName;
-   res.send(createTemplate(articles[articleName]));
+    pool.query("SELECT * from article where title="+articleName,function(err,result)
+    {
+      if(err)
+        res.status(500).send(err.toString());
+    else
+    {
+        if(result.rows.length === 0)//When we tried to access a article not in database
+           res.status(404).send("Requested Article not found");
+        var articleData=result.rows[0];
+        res.send(createTemplate(articleData));
+    }
+});//end of request processing
 });
 
 
@@ -166,4 +177,9 @@ app.get('/:articleName',function(req,res)
 var port = 80;
 app.listen(port, function () {
   console.log(`IMAD course app listening on port ${port}!`);
+});
+app.get('/articles/:articleName',function(req,res)
+{
+    var articlename=req.params.articleName;
+    res.send(createTemplates(articleData));
 });
