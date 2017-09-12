@@ -156,18 +156,18 @@ app.get('/submit-name', function (req, res) {
 app.get('/:articleName',function(req,res)
 {
     var articleName=req.params.articleName;
-    pool.query("SELECT * from article where title="+articleName,function(err,result)
+    pool.query("SELECT * from article where title='"+articleName +"'",function(err,result)
     {
-      if(err)
-        res.status(500).send(err.toString());
-    else
-    {
-        if(result.rows.length === 0)//When we tried to access a article not in database
-           res.status(404).send("Requested Article not found");
-        var articleData=result.rows[0];
-        res.send(createTemplate(articleData));
-    }
-});//end of request processing
+        if(err)
+            res.status(500).send(err.toString());
+        else
+        {
+            if(result.rows.length === 0)//When we tried to access a article not in database
+               res.status(404).send("Requested Article not found");
+            var articleData=result.rows[0];
+            res.send(createTemplate(articleData));
+        }
+    });//end of request processing
 });
 
 
