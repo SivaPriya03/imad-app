@@ -64,7 +64,7 @@ var articles=
     {
             title: 'Article three | Siva Priya',
             h1: 'Article three',
-            date : 'Sep 11 2017 :(',
+            date : 'Sep 11 2017',
             content:`
             <p>
             The third article describes 
@@ -157,8 +157,8 @@ app.get('/:articleName',function(req,res)
 {
 
     var articleName=req.params.articleName;
-        console.log(articleName)
-    pool.query("SELECT * from article where title='"+articleName +"'",function(err,result)
+        //console.log(articleName)
+    pool.query("SELECT * from article where title= $1",articleName ,function(err,result)
     {
         if(err)
             res.status(500).send(err.toString());
