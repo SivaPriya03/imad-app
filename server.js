@@ -155,7 +155,9 @@ app.get('/submit-name', function (req, res) {
 
 app.get('/:articleName',function(req,res)
 {
+
     var articleName=req.params.articleName;
+        console.log(articleName)
     pool.query("SELECT * from article where title='"+articleName +"'",function(err,result)
     {
         if(err)
