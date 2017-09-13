@@ -173,10 +173,11 @@ app.post('/login',function(req,res)
             var salt=dbString.split('$')[2];
             var hashedPassword=hash(password,salt);
             if(hashedPassword=== dbString){
-              res.status(200).send('Credentials match');
-              //Create a Session
-              req.session.auth={userId:result.rows[0].id};
+                req.session.auth={userId:result.rows[0].id};
               
+              //Create a Session
+              
+              res.status(200).send('Credentials match'); 
             }
             else
               res.status(403).send('Login failed');
@@ -190,6 +191,8 @@ app.get('/check-login',function(req,res){
    {
        res.status(200).send('You are logged in'+req.session.auth.userId.toString());
    }
+   else
+     res.send("Not logged in");
 });
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
