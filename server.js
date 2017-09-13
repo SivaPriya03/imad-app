@@ -140,12 +140,39 @@ app.post('/create-user',function(req,res)
     //JSON requests
     var salt=crypto.randomBytes(128).toString('hex');
     var dbString=hash(password,salt);
-    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)' ,[username,dbString],function(err,res)
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)' ,[username,dbString],function(err,result)
     {
         if(err)
           res.status(500).send(err.toString());
         else
           res.send("User Successfully created "+username);
+    });
+})
+app.post('/login',function(req,res)
+{
+    var username=req.body.username;
+    var password=req.body.password;
+    //JSON requests
+    pool.query('SELCT * FROM "user" WHERE username=$1',[username],function(err,result)
+    {
+        if(err)
+          res.status(500).send(err.toString());
+        else{
+        if(result.rows.length === 0)//When we tried to access a article not in database
+               res.status(404).send("Invalid Login");
+        else
+        
+        {
+            var dbString=result.rows[0].password;
+            var salt=dbString.split('$')[2];
+            var hashedPassword=hash(password,salt);
+            if(hashedPassword=== dbString)
+              res.status(200).send('Credentials match');
+            else
+              res.status(403).send('Login failed');
+
+        }
+        }
     });
 })
 app.get('/ui/style.css', function (req, res) {
