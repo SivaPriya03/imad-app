@@ -214,6 +214,10 @@ app.get('/test-db',function(req,res)
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+app.get('/logout',function(req,res){
+    delete(req.session.auth);
+    res.send('Logged out');
+});
 var counter=0;
 app.get('/counter', function (req, res) {
     counter=counter+1;
