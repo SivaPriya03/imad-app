@@ -18,7 +18,7 @@ var config =
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
+var pool=new Pool(config);
 var articles=
 {
 
@@ -119,7 +119,7 @@ function createTemplate(data)
         </html>`;
 return Template;
 
-}
+} 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -181,7 +181,7 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-var pool=new Pool(config);
+
 app.get('/test-db',function(req,res)
 {
     pool.query('SELECT * from test',function(err,result)
