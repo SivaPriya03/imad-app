@@ -3,19 +3,31 @@
     <head>
         <link href="/ui/style.css" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h1
+            {
+                color:blue;
+                font-size:60px;
+            }
+        </style>
     </head>
     <body>
         <div>
 	        This Button <button id='button' >Click</button> has been clicked <span id="counter"> 0</span> times
 	        <hr/>
 	        <hr/>
-	        <input type="text" id="name" placeholder="Name"></input>
-	        <input type="submit" value="Submit" id="submitbtn"></input>
+	        <input type="text" id="name" placeholder="Name"/>
+	        <input type="submit" value="Submit1" id="submitbtn2">
 	        <ul id="list">
 	            
 	        </ul>
 	    </div>
-
+        <div>
+            <h1> LOGIN FORM</h1>
+            <input type="text" id="username" placeholder="Enter the username"/>
+            <input type="password" id="password" />
+            <input type="submit" value="Submit" id="submitbtn"/>
+        </div>
         <script type="text/javascript" src="/ui/main.js">
         </script>
     </body>
