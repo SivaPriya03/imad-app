@@ -79,7 +79,7 @@ request.open('POST','http://sivapriya1700.imad.hasura-app.io/create-user',true);
 request.setRequestHeader('Content-Type','application/json');
 request.send(JSON.stringify({username:username,password:password}));
 };
-var register=document.getElementById('submitbtn2');
+submit=document.getElementById('submitbtn2');
 submit.onclick=function()
 {
     var request =new XMLHttpRequest();
