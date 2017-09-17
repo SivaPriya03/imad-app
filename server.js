@@ -251,10 +251,10 @@ app.get('/:articleName',function(req,res)
         //console.log(articleName)
     var articleObj=[];
     var index=0;
-    pool.query("SELECT * from article where title= $1",[articleName] ,function(err,result)
+    pool.query("SELECT * from article " ,function(err,result)
     {
         
-        if(err){
+        /*if(err){
             var errorMsg={};
             errorMsg['error']="Error:Something Wrong";
             articleObj[index]=errorMsg;
@@ -270,22 +270,27 @@ app.get('/:articleName',function(req,res)
                 articleObj[index]=errorMsg;
                 index++; 
                 res.status(404).send(JSON.stringify(articleObj));
-            }
+            }*/
             //var articleData=result.rows[0];
             //res.send(createTemplate(articleData));
+            result.forEach(function(row)
+            {
             var articleData={};
-            var articleId=result.rows[0].id;
+            /*var articleId=result.rows[0].id;
             var articleTitle=result.rows[0].title;
             var articleHead=result.rows[0].h1;
             var articleDate=result.rows[0].date;
-            var articleContent=result.rows[0].content;
-            articleData['id']=articleId;
-            articleData['title']=articleTitle;
-            articleData['h1']=articleHead;
-            articleData['date']=articleDate;
-            articleData['content']=articleContent;
+            var articleContent=result.rows[0].content;*/
+            articleData['id']=row['id'];
+            articleData['title']=row['title'];
+            articleData['h1']=row['h1'];
+            articleData['date']=row['date'];
+            articleData['content']=row['content'];
+            index++;
+            });
             articleObj[index]=articleData;
             res.status(200).send(JSON.stringify(articleObj));
+            
         }
     });//end of request processing
 });
