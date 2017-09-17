@@ -228,11 +228,11 @@ app.get('/counter', function (req, res) {
     counter=counter+1;
     res.send(counter.toString());
 });
-var names=[];
+var submittednames=[];
 app.get('/submit-name', function (req, res) {
-   var name= req.query.name;
-   names.push(name);
-   res.send(JSON.stringify(names));
+   var requestname= req.query.name;
+   submittednames.push(requestname);
+   res.send(JSON.stringify(submittednames));
 });
 
 app.get('/:articleName',function(req,res)
