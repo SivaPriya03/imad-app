@@ -249,16 +249,43 @@ app.get('/:articleName',function(req,res)
 
     var articleName=req.params.articleName;
         //console.log(articleName)
+    var articleObj=[];
+    var index=0;
     pool.query("SELECT * from article where title= $1",[articleName] ,function(err,result)
     {
-        if(err)
-            res.status(500).send(err.toString());
+        
+        if(err){
+            var errorMsg={};
+            errorMsg['error']="Error:Something Wrong";
+            articleObj[index]=errorMsg;
+            index++;
+            res.status(500).send(JSON.stringify(articleObj));
+        }
         else
         {
             if(result.rows.length === 0)//When we tried to access a article not in database
-               res.status(404).send("Requested Article not found");
-            var articleData=result.rows[0];
-            res.send(createTemplate(articleData));
+            {
+                var errorMsg={};
+                errorMsg['error']='Requested Article not found';
+                articleObj[index]=errorMsg;
+                index++; 
+                res.status(404).send(JSON.stringify(articleObj));
+            }
+            //var articleData=result.rows[0];
+            //res.send(createTemplate(articleData));
+            var articleData={};
+            var articleId=result.rows[0].id;
+            var articleTitle=result.rows[0].title;
+            var articleHead=result.rows[0].h1;
+            var articleDate=result.rows[0].date;
+            var articleContent=result.rows[0].content;
+            articleData['id']=articleId;
+            articleData['title']=articleTitle;
+            articleData['h1']=articleHead;
+            articleData['date']=articleDate;
+            articleData['content']=articleContent;
+            articleObj[index]=articleData;
+            res.status(200).send(JSON.stringify(articleObj));
         }
     });//end of request processing
 });
