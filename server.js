@@ -151,7 +151,7 @@ app.post('/create-user',function(req,res)
         if(err)
           res.status(500).send(err.toString());
         else
-          res.send("User Successfully created "+username);
+          res.status(200).send("User Successfully created "+username);
     });
 })
 app.post('/login',function(req,res)
