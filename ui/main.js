@@ -1,83 +1,37 @@
-var button=document.getElementById('button');
-var counter=0;
-button.onclick=function()
-{
-    
-    var request =new XMLHttpRequest();
-    request.onreadystatechange=function()
-    {
-        if(request.readyState ===  XMLHttpRequest.DONE)
-        {
-            if(request.status === 200){
-              var counter=request.responseText;
-              //counter+=1;
-              var span=document.getElementById('counter');
-              span.innerHTML=counter.toString();
+<!doctype html>
+<html>
+    <head>
+        <link href="/ui/style.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h1
+            {
+                color:blue;
+                font-size:60px;
             }
-        }
-    };
-
-request.open('GET','http://sivapriya1700.imad.hasura-app.io/counter',true);
-request.send(null);
-};
-var submit=document.getElementById('submitbtn2');
-submit.onclick=function()
-{
-    var request =new XMLHttpRequest();
-    request.onreadystatechange=function()
-    {
-        if(request.readyState ===  XMLHttpRequest.DONE)
-        {
-            if(request.status === 200){
-              var names=request.responseText;
-              //Console.log(request.onreadystatechange);
-              names=JSON.parse(names);
-                var list='';
-                for (var i=0;i<names.length;i++)
-                {
-                    list+='<li>'+names[i]+'</li>';
-                }
-                var ul=document.getElementById('list');
-                ul.innerHTML=list;
-            
-            }
-        }
-    };
-var nameip=document.getElementById('name');
-var myname=nameip.value;
-request.open('GET','http://sivapriya1700.imad.hasura-app.io/submit-name?name=' + myname,true);
-request.send(null);
-};
-
-//Module P11: maintaining session
-submit=document.getElementById('submitbtn');
-submit.onclick=function()
-{
-    var request =new XMLHttpRequest();
-    request.onreadystatechange=function()
-    {
-        if(request.readyState ===  XMLHttpRequest.DONE)
-        {
-            if(request.status === 200){
-              console.log("User logged in");
-              alert("Login Success");
-            }
-            else if(request.status===403){
-               console.log("Invalid login");
-               alert("Login fails");
-            }  
-            else
-               alert("Somethong went wrong");
-        }
-    };
-var username=document.getElementById('username').value;
-var password=document.getElementById('password').value;
-console.log(username);
-console.log(password);
-
-request.open('POST','http://sivapriya1700.imad.hasura-app.io/login',true);
-request.setRequestHeader('Content-Type','application/json');
-request.send(JSON.stringify({username:username,password:password}));
-};
-
-    
+        </style>
+    </head>
+    <body>
+        <div>
+	        This Button <button id='button' >Click</button> has been clicked <span id="counter"> 0</span> times
+	        <hr/>
+	        <hr/>
+	        <input type="text" id="name" placeholder="Name"/>
+	        <input type="submit" value="Submit" id="submitbtn2">
+	        <ul id="list">
+	            
+	        </ul>
+	    </div>
+        <div>
+            <h1> LOGIN FORM</h1>
+            <input type="text" id="username" placeholder="Enter the username"/>
+            <input type="password" id="password" />
+            <input type="submit" value="Submit" id="submitbtn"/>
+        </div>
+        <div><br>New User? Register here
+        <input type="submit" value="Register" id="registerbtn"/>
+        </div>
+        <script type="text/javascript" src="/ui/main.js">
+        </script>
+    </body>
+</html>
