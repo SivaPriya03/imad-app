@@ -276,12 +276,12 @@ app.get('/:articleName',function(req,res)
             var articleData={};
             var articleId=result.rows[0].id;
             var articleTitle=result.rows[0].title;
-          //  var articleHead=result.rows[0].h1;
+            var articleHead=result.rows[0].h1;
             var articleDate=result.rows[0].date;
             var articleContent=result.rows[0].content;
             articleData['id']=articleId;
             articleData['title']=articleTitle;
-        //    articleData['h1']=articleHead;
+            articleData['h1']=articleHead;
             articleData['date']=articleDate;
             articleData['content']=articleContent;
             articleObj[index]=articleData;
