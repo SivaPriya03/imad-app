@@ -151,10 +151,12 @@ app.post('/create-user',function(req,res)
     {
         if(err){
           output['error']='Username already Taken. Select another name' ;
-          res.status(500).send();
+          res.status(500).send(JSON.stringify(output));
         }
-        else
-          res.status(200).send("User Successfully created "+username);
+        else{
+         output['message']="User Successfully created "+username;
+          res.status(200).send(JSON.stringify(output));
+        }
     });
 })
 app.post('/login',function(req,res)
