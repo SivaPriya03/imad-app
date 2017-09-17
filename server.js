@@ -161,16 +161,22 @@ app.post('/create-user',function(req,res)
 })
 app.post('/login',function(req,res)
 {
+    var output={};
     var username=req.body.username;
     var password=req.body.password;
     //JSON requests
     pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result)
     {
-        if(err)
-          res.status(500).send(err.toString());
+        if(err){
+          output['error']=err.toString();
+          res.status(500).send(JSON.stringify(output));
+        }
         else{
         if(result.rows.length === 0)//When we tried to access a article not in database
-               res.status(404).send("Invalid Login");
+        {
+               output['error']='Invalid Login'
+               res.status(404).send(JSON.stringify(output));
+        }
         else
         
         {
@@ -179,13 +185,16 @@ app.post('/login',function(req,res)
             var hashedPassword=hash(password,salt);
             if(hashedPassword=== dbString){
                 req.session.auth={userId:result.rows[0].id};
-              
+                output['message']='User logged in successully'
               //Create a Session
               
-              res.status(200).send('Credentials match'); 
+              res.status(200).send(JSON.stringify(output)); 
             }
             else
-              res.status(403).send('Login failed');
+            {
+              output['error']=  'Login failed';  
+              res.status(403).send(JSON.stringify(output));
+            }
 
         }
         }
