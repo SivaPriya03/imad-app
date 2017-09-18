@@ -246,32 +246,7 @@ app.get('/submit-name', function (req, res) {
 app.get('/articles',function(req,res)
 {
 
-    //var articleName=req.params.articleName;
-        //console.log(articleName)
-    var articleObj=[];
-    var index=0;
-    pool.query("SELECT * from article" ,function(err,result)
-    {
-            result.forEach(function(row){
-              
-            var articleData={};
-            var articleId=row['id'];
-            var articleTitle=row['title'];
-            var articleHead=row['h1'];
-            var articleDate=row['date'];
-            var articleContent=row['conteny'];
-            articleData['id']=articleId;
-            articleData['title']=articleTitle;
-            articleData['h1']=articleHead;
-            articleData['date']=articleDate;
-            articleData['content']=articleContent;  
-            articleObj[index]=articleData;
-            index++;
-            });
-            
-            res.status(200).send(JSON.stringify(articleObj));
-        }
-    });//end of request processing
+    
 });
 
 
