@@ -245,7 +245,7 @@ app.get('/submit-name', function (req, res) {
 });
 app.get('/articles',function(req,res)
 {
-    pool.quer("SELECT * FROM article",function(err,result)
+    pool.query("SELECT * FROM article",function(err,result)
     {
        if(err)
        {
