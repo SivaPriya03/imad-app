@@ -245,7 +245,17 @@ app.get('/submit-name', function (req, res) {
 });
 app.get('/articles',function(req,res)
 {
-
+    pool.quer("SELECT * FROM article",function(err,result)
+    {
+       if(err)
+       {
+           var output={};
+           output['error']='Error Fetching data';
+             res.status(500).send(JSON.stringify(output));
+       }
+       else
+         res.status(200).send(JSON.stringify(result.rows));
+    });
     
 });
 
