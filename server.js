@@ -269,7 +269,7 @@ app.get('/articles',function(req,res)
             index++;
             });
             
-            res.status(200).send(JSON.stringify(articleObj))
+            res.status(200).send(JSON.stringify(articleObj));
         }
     });//end of request processing
 });
