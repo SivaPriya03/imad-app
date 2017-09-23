@@ -222,7 +222,7 @@ app.get('/test-db',function(req,res)
         if(err)
           res.status(500).send(err.toString());
         else
-          res.send(result);
+          res.send(result.rows);
     });
 });
 app.get('/ui/madi.png', function (req, res) {
