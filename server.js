@@ -24,6 +24,9 @@ var config =
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'home.html'));
 });
+app.get('/ui/style1.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'style1.css'));
+});
 app.get('/ui/clg.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'clg.png'));
 });
@@ -44,9 +47,6 @@ app.get('/ui/whats.png', function (req, res) {
 });
 app.get('/ui/whats.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
-app.get('/ui/style1.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style1.css'));
 });
 
 var pool=new Pool(config);
