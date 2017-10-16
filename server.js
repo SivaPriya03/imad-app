@@ -24,6 +24,10 @@ var config =
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'home.html'));
 });
+app.get('/log', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'login.html'));
+});
+
 app.get('/ui/style1.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style1.css'));
 });
