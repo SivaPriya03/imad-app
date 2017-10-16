@@ -50,6 +50,10 @@ app.get('/ui/face1.png', function (req, res) {
 app.get('/ui/icon7.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'icon7.png'));
 });
+app.get('/ui/loginbg.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'loginbg.png'));
+});
+
 app.get('/ui/whats.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'whats.png'));
 });
