@@ -22,7 +22,7 @@ var config =
     password: process.env.DB_PASSWORD
 };
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'home.html'));
 });
 var pool=new Pool(config);
 var articles=
