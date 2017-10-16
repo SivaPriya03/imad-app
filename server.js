@@ -27,10 +27,14 @@ app.get('/', function (req, res) {
 app.get('/log', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'login.html'));
 });
+app.get('/ui/style2.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'style2.css'));
+});
 
 app.get('/ui/style1.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style1.css'));
 });
+
 app.get('/ui/clg.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'clg.png'));
 });
