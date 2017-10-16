@@ -43,10 +43,10 @@ app.get('/ui/icon7.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'icon7.png'));
 });
 app.get('/ui/whats.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+  res.sendFile(path.join(__dirname, 'ui', 'whats.png'));
 });
-app.get('/ui/whats.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+app.get('/ui/logo.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'logo.png'));
 });
 
 var pool=new Pool(config);
